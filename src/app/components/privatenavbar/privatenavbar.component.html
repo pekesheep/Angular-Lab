@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <img src="./assets/img/patata.png" />
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="/dashboard">Dashboard</button>
+  <button
+    mat-button
+    [routerLinkActive]="['is-active']"
+    routerLink="/dashboard/gallery"
+  >
+    Gallery
+  </button>
+  <button
+    mat-button
+    [routerLinkActive]="['is-active']"
+    routerLink="/dashboard/crud"
+  >
+    CRUD
+  </button>
+  <button
+    mat-button
+    [routerLinkActive]="['is-active']"
+    routerLink="/dashboard/profile"
+  >
+    Profile
+  </button>
+  <span class="example-spacer"></span>
+  <span class="username">Welcome, {{ _auth.getUsername() }}</span>
+  <button
+    (click)="doLogout()"
+    mat-button
+    class="example-icon logout-icon"
+    aria-label="Example icon-button with logout icon"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

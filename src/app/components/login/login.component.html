@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="body">
+  <div class="login">
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+      <div>
+        <span>User: Carlos</span>
+        <br />
+        <span>Password: apruebame</span>
+      </div>
+      <img src="./assets/img/UserLogin.png" />
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>User</mat-label>
+        <input matInput autocomplete="off" formControlName="username" />
+      </mat-form-field>
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          autocomplete="off"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <br />
+      <button
+        type="submit"
+        class="ancho"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+      >
+        Login
+      </button>
+    </form>
+    <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="gallery-container">
+  <div class="big-image-container">
+    <img
+      [ngStyle]="{ 'max-height.%': zoomPercent }"
+      class="big-image"
+      [src]="bigImage"
+    />
+  </div>
+  <div class="controls-container">
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="BigImgIndex === 0"
+      (click)="previousBigImage()"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="!onPlay"
+      (click)="play()"
+    >
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="!onStop"
+      (click)="stop()"
+    >
+      <mat-icon>stop</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="zoomPercent >= 100"
+      (click)="zoomIn()"
+    >
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="zoomPercent <= 10"
+      (click)="zoomOut()"
+    >
+      <mat-icon>zoom_out</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      [disabled]="BigImgIndex === images.length - 1"
+      (click)="nextBigImage()"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  <div class="small-images-container">
+    <button
+      class="small-images-button"
+      mat-icon-button
+      color="primary"
+      [disabled]="start === 0"
+      (click)="previousSmallImage()"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <tr *ngFor="let image of images | slice: start:end; let i = index">
+      <td>
+        <img
+          class="small-images"
+          [src]="image.src"
+          alt="{{ image.title }}"
+          (click)="selectImage(i + start)"
+          [class.highlight]="image.src === bigImage"
+        />
+      </td>
+    </tr>
+    <button
+      class="small-images-button"
+      mat-icon-button
+      color="primary"
+      [disabled]="end === images.length"
+      (click)="nextSmallImage()"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
